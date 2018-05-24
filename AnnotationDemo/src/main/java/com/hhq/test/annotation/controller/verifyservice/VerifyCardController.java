@@ -1,5 +1,6 @@
- package com.hhq.test.annotation.controller.verifyservice;
+package com.hhq.test.annotation.controller.verifyservice;
 
+import com.hhq.test.annotation.api.BankCardDTO;
 import com.hhq.test.annotation.customannotation.VerifyService;
 
 /**
@@ -8,6 +9,21 @@ import com.hhq.test.annotation.customannotation.VerifyService;
  * @version 1.0.0
  */
 @VerifyService(verifyType = "verifycard")
-public class VerifyCardController {
-    
+public class VerifyCardController implements InvokeService {
+
+    /* (non-Javadoc)
+     * @see com.hhq.test.annotation.controller.verifyservice.InvokeService#invoke(java.lang.String)
+     */
+    @Override
+    public Object invoke(String requestBody) {
+
+        BankCardDTO bankcard = new BankCardDTO();
+        bankcard.setId(1L);
+        bankcard.setBankName("ICBC");
+        bankcard.setCardName("Debit Card");
+        bankcard.setCardType(1);
+        bankcard.setCardNum("123456 1234568 98765");
+        return bankcard;
+    }
+
 }

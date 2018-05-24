@@ -64,7 +64,6 @@ public class VerifyAnnotationProcessor implements BeanPostProcessor {
         VerifyService vefifyService = AnnotationUtils.findAnnotation(clazz, VerifyService.class);
         if (vefifyService != null) {
             controller.registerVefifyServiceBean(vefifyService.verifyType(), bean);
-            System.out.println("===== Has registered new bean" + bean.getClass().getName() + "to VerifiyController.");
         }
     }
 
