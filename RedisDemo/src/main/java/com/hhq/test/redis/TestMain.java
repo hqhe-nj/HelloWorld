@@ -2,6 +2,7 @@ package com.hhq.test.redis;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.Date;
 import java.util.Set;
 
 import com.esotericsoftware.kryo.Kryo;
@@ -49,7 +50,8 @@ public class TestMain {
 
 //        testSet(jedis);
 //        System.out.println("================ Jedis has set a lot of keys=====================");
-        testDelKeys(jedis);
+//        testDelKeys(jedis);
+        testDel(jedis);
         System.out.println("================== Jedis has deleted all of the keys =======================");
     }
 
@@ -70,11 +72,13 @@ public class TestMain {
     }
 
     public static void testDel(Jedis jedis) {
-        Set<String> set = jedis.keys("20180726-*");
+        Set<String> set = jedis.keys("20181027*");
+        System.out.println("======= Delete start time:" + new Date());
         for (String key : set) {
             jedis.del(key);
-            System.out.println("Deleting key: " + key);
+//            System.out.println("Deleting key: " + key);
         }
+        System.out.println("======= Delete end time:" + new Date());
 
     }
 
